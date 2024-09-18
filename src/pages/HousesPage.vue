@@ -1,5 +1,16 @@
 <script setup>
-import { Pop } from '@/utils/Pop.js'
+import { AppState } from "@/AppState.js";
+import { logger } from "@/utils/Logger.js";
+import { housesService } from "@/services/HousesService.js";
+import { computed, onMounted } from "vue";
+import Pop from "@/utils/Pop.js";
+
+const houses = computed(() => AppState.houses)
+
+onMounted(() => {
+  getHouses()
+})
+
 
 async function getHouses() {
   try {
